@@ -12,19 +12,28 @@
 
 	<!-- 10 buttons with ids -->
 	<div style="text-align: center;">
-		<button id="btn1">Insertion Sort</button>
-		<button id="btn2">Bubble Sort</button>
-		<button id="btn3">Merge Sort</button>
-		<button id="btn4">Heap Sort</button>
-		<button id="btn5">Quick Sort</button>
-		<button id="btn6">Radix Sort</button>
-		<button id="btn7">Bucket Sort</button>
-		<button id="btn8">Courting Sort</button>
-		<button id="btn9">7.4.5. from book</button>
-		<button id="btn10">8.2.4. from book</button>
+		<button id="btn1" onclick="changeColor(this.id)">Insertion Sort</button>
+		<button id="btn2" onclick="changeColor(this.id)">Bubble Sort</button>
+		<button id="btn3" onclick="changeColor(this.id)">Merge Sort</button>
+		<button id="btn4" onclick="changeColor(this.id)">Heap Sort</button>
+		<button id="btn5" onclick="changeColor(this.id)">Quick Sort</button>
+		<button id="btn6" onclick="changeColor(this.id)">Radix Sort</button>
+		<button id="btn7" onclick="changeColor(this.id)">Bucket Sort</button>
+		<button id="btn8" onclick="changeColor(this.id)">Courting Sort</button>
+		<button id="btn9" onclick="changeColor(this.id)">7.4.5. from book</button>
+		<button id="btn10" onclick="changeColor(this.id)">8.2.4. from book</button>
 	</div>
 	<br>
 	<br>
+
+	<!-- make a input of type file centered aligned -->
+	<div style="text-align: center;">
+		<input type="file" id="file" accept=".txt">
+	</div>
+
+	<br>
+	<!-- <br> -->
+
 	<!-- input field asking for array size -->
 	<div style="text-align: center;">
 		<label for="arraySize">Enter Array Size: </label>
@@ -33,11 +42,13 @@
 		<button id="btn11">Generate Array</button>
 	</div>
 
-	<div id = "array" style="text-align: center;">
-		<!-- array will be displayed here -->
+	<!-- make a bordered div with id array and max height of 200px and scrollable show boreder only when there is content inside-->
+	<div id="array" style="border: 1px solid rgb(255, 255, 255); height: 70px; overflow: auto; display: block; margin-left: auto; margin-right: auto;">
 	</div>
+	<br>
+	<br>
 
-	<div id = "sortedArray" style="text-align: center;">
+	<div id = "sortedArray" style="border: 1px solid rgb(255, 255, 255); height: 70px; overflow: auto; display: block; margin-left: auto; margin-right: auto;">
 		<!-- sorted array will be displayed here -->
 	</div>
 
@@ -46,5 +57,6 @@
 	</div>
 
 	<script src="app.js"></script>
+	<!-- <script src="fs.js"></script> -->
 </body>
 </html>
