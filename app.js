@@ -63,20 +63,16 @@ function createArray(size) {
 				displayArray.innerHTML += array[i] + ", "
 			}
 		}
-		// getElements(array)
 		select(array)
 	}
 	reader.readAsText(input.files[0])
 }
 
 function insertion_sort(array) {
-	// sort the array using insertion sort and add <p>Sorted Array: </p> to the div with id sortedArray and display the time it took to sort the array in the div with id time
-	// document.getElementById("array").innerHTML = "<p>insertion sort</p>"
 	var sortedArray = new Array()
 	for (var i = 0; i < array.length; i++) {
 		sortedArray[i] = array[i]
 	}
-	// make start time variable with 5 decimal places and set it to the current time
 	var startTime = performance.now()
 	for (var i = 1; i < sortedArray.length; i++) {
 		var temp = sortedArray[i]
@@ -87,7 +83,6 @@ function insertion_sort(array) {
 		}
 		sortedArray[j + 1] = temp
 	}
-	// make end time variable with 5 decimal places and set it to the current time
 	var endTime = performance.now()
 	var time = endTime - startTime
 
@@ -104,13 +99,10 @@ function insertion_sort(array) {
 }
 
 function bubble_sort(array) {
-	// sort the array using bubble sort and add <p>Sorted Array: </p> to the div with id sortedArray and display the time it took to sort the array in the div with id time
-	// document.getElementById("array").innerHTML = "<p>bubble sort</p>"
 	var sortedArray = new Array()
 	for (var i = 0; i < array.length; i++) {
 		sortedArray[i] = array[i]
 	}
-	// make start time variable with 5 decimal places and set it to the current time
 	var startTime = performance.now()
 	for (var i = 0; i < sortedArray.length; i++) {
 		for (var j = 0; j < sortedArray.length - 1; j++) {
@@ -121,7 +113,6 @@ function bubble_sort(array) {
 			}
 		}
 	}
-	// make end time variable with 5 decimal places and set it to the current time
 	var endTime = performance.now()
 	var time = endTime - startTime
 
@@ -138,16 +129,12 @@ function bubble_sort(array) {
 }
 
 function merge_sort(array) {
-	// sort the array using merge sort and add <p>Sorted Array: </p> to the div with id sortedArray and display the time it took to sort the array in the div with id time
-	// document.getElementById("array").innerHTML = "<p>merge sort</p>"
 	var sortedArray = new Array()
 	for (var i = 0; i < array.length; i++) {
 		sortedArray[i] = array[i]
 	}
-	// make start time variable with 5 decimal places and set it to the current time
 	var startTime = performance.now()
 	mergeSort(sortedArray, 0, sortedArray.length - 1)
-	// make end time variable with 5 decimal places and set it to the current time
 	var endTime = performance.now()
 	var time = endTime - startTime
 	
@@ -209,16 +196,12 @@ function merge(array, left, middle, right) {
 }
 
 function heap_sort(array) {
-	// sort the array using heap sort and add <p>Sorted Array: </p> to the div with id sortedArray and display the time it took to sort the array in the div with id time
-	// document.getElementById("array").innerHTML = "<p>heap sort</p>"
 	var sortedArray = new Array()
 	for (var i = 0; i < array.length; i++) {
 		sortedArray[i] = array[i]
 	}
-	// make start time variable with 5 decimal places and set it to the current time
 	var startTime = performance.now()
 	heapSort(sortedArray)
-	// make end time variable with 5 decimal places and set it to the current time
 	var endTime = performance.now()
 	var time = endTime - startTime
 
@@ -266,16 +249,12 @@ function heapify(array, n, i) {
 }
 
 function quick_sort(array) {
-	// sort the array using quick sort and add <p>Sorted Array: </p> to the div with id sortedArray and display the time it took to sort the array in the div with id time
-	// document.getElementById("array").innerHTML = "<p>quick sort</p>"
 	var sortedArray = new Array()
 	for (var i = 0; i < array.length; i++) {
 		sortedArray[i] = array[i]
 	}
-	// make start time variable with 5 decimal places and set it to the current time
 	var startTime = performance.now()
 	quickSort(sortedArray, 0, sortedArray.length - 1)
-	// make end time variable with 5 decimal places and set it to the current time
 	var endTime = performance.now()
 	var time = endTime - startTime
 
@@ -317,16 +296,12 @@ function partition(array, left, right) {
 }
 
 function radix_sort(array) {
-	// sort the array using radix sort and add <p>Sorted Array: </p> to the div with id sortedArray and display the time it took to sort the array in the div with id time
-	// document.getElementById("array").innerHTML = "<p>radix sort</p>"
 	var sortedArray = new Array()
 	for (var i = 0; i < array.length; i++) {
 		sortedArray[i] = array[i]
 	}
-	// make start time variable with 5 decimal places and set it to the current time
 	var startTime = performance.now()
 	radixSort(sortedArray)
-	// make end time variable with 5 decimal places and set it to the current time
 	var endTime = performance.now()
 	var time = endTime - startTime
 
@@ -381,16 +356,12 @@ function getMax(array) {
 }
 
 function bucket_sort(array) {
-	// sort the array using bucket sort and add <p>Sorted Array: </p> to the div with id sortedArray and display the time it took to sort the array in the div with id time
-	// document.getElementById("array").innerHTML = "<p>bucket sort</p>"
 	var sortedArray = new Array()
 	for (var i = 0; i < array.length; i++) {
 		sortedArray[i] = array[i]
 	}
-	// make start time variable with 5 decimal places and set it to the current time
 	var startTime = performance.now()
 	bucketSort(sortedArray)
-	// make end time variable with 5 decimal places and set it to the current time
 	var endTime = performance.now()
 	var time = endTime - startTime
 
@@ -450,16 +421,12 @@ function insertionSort(array) {
 }
 
 function courting_sort(array) {
-	// sort the array using counting sort and add <p>Sorted Array: </p> to the div with id sortedArray and display the time it took to sort the array in the div with id time
-	// document.getElementById("array").innerHTML = "<p>counting sort</p>"
 	var sortedArray = new Array()
 	for (var i = 0; i < array.length; i++) {
 		sortedArray[i] = array[i]
 	}
-	// make start time variable with 5 decimal places and set it to the current time
 	var startTime = performance.now()
 	courtingSort(sortedArray)
-	// make end time variable with 5 decimal places and set it to the current time
 	var endTime = performance.now()
 	var time = endTime - startTime
 
@@ -495,10 +462,8 @@ function courtingSort(array) {
 }
 
 
-// add event listener to the button11 and get the value of the arraysize input
 document.getElementById("btn11").addEventListener("click", function () {
 	var arraysize = document.getElementById("arraySize").value
 	document.getElementById("array").innerHTML = ""
-	// call the function to create the array
 	createArray(arraysize)
 })
