@@ -96,6 +96,8 @@ function insertion_sort(array) {
 		}
 	}
 	document.getElementById("time").innerHTML = "Time: " + time + "ms"
+	document.getElementById("time").innerHTML += "<br>" + "Time Complexity: O(2<sup>2</sup>)"
+	document.getElementById("time").innerHTML += "<br>Space Complexity: O(1)"
 }
 
 function bubble_sort(array) {
@@ -126,6 +128,8 @@ function bubble_sort(array) {
 		}
 	}
 	document.getElementById("time").innerHTML = "Time: " + time + "ms"
+	document.getElementById("time").innerHTML += "<br>" + "Time Complexity: O(2<sup>2</sup>)"
+	document.getElementById("time").innerHTML += "<br>Space Complexity: O(1)"
 }
 
 function merge_sort(array) {
@@ -137,7 +141,7 @@ function merge_sort(array) {
 	mergeSort(sortedArray, 0, sortedArray.length - 1)
 	var endTime = performance.now()
 	var time = endTime - startTime
-	
+
 	document.getElementById("sortedArray").innerHTML = "Sorted Array: "
 
 	for (var i = 0; i < sortedArray.length; i++) {
@@ -148,6 +152,9 @@ function merge_sort(array) {
 		}
 	}
 	document.getElementById("time").innerHTML = "Time: " + time + "ms"
+	// merge sort time complexity
+	document.getElementById("time").innerHTML += "<br>" + "Time Complexity: O(nlogn)"
+	document.getElementById("time").innerHTML += "<br>Space Complexity: O(n)"
 }
 
 function mergeSort(array, left, right) {
@@ -215,6 +222,9 @@ function heap_sort(array) {
 		}
 	}
 	document.getElementById("time").innerHTML = "Time: " + time + "ms"
+	// heap sort time complexity
+	document.getElementById("time").innerHTML += "<br>" + "Time Complexity: O(nlogn)"
+	document.getElementById("time").innerHTML += "<br>Space Complexity: O(1)"
 }
 
 function heapSort(array) {
@@ -268,6 +278,9 @@ function quick_sort(array) {
 		}
 	}
 	document.getElementById("time").innerHTML = "Time: " + time + "ms"
+	// quick sort time complexity
+	document.getElementById("time").innerHTML += "<br>" + "Time Complexity: O(nlogn)"
+	document.getElementById("time").innerHTML += "<br>Space Complexity: O(logn)"
 }
 
 function quickSort(array, left, right) {
@@ -315,6 +328,9 @@ function radix_sort(array) {
 		}
 	}
 	document.getElementById("time").innerHTML = "Time: " + time + "ms"
+	// radix sort time complexity
+	document.getElementById("time").innerHTML += "<br>" + "Time Complexity: O(d(n+k))"
+	document.getElementById("time").innerHTML += "<br>Space Complexity: O(n+k)"
 }
 
 function radixSort(array) {
@@ -375,6 +391,9 @@ function bucket_sort(array) {
 		}
 	}
 	document.getElementById("time").innerHTML = "Time: " + time + "ms"
+	// bucket sort time complexity
+	document.getElementById("time").innerHTML += "<br>" + "Time Complexity: O(n+k)"
+	document.getElementById("time").innerHTML += "<br>Space Complexity: O(n+k)"
 }
 
 function bucketSort(array) {
@@ -440,6 +459,9 @@ function courting_sort(array) {
 		}
 	}
 	document.getElementById("time").innerHTML = "Time: " + time + "ms"
+	// courting sort time complexity
+	document.getElementById("time").innerHTML += "<br>" + "Time Complexity: O(n)"
+	document.getElementById("time").innerHTML += "<br>Space Complexity: O(1)"
 }
 
 function courtingSort(array) {
@@ -463,7 +485,14 @@ function courtingSort(array) {
 
 
 document.getElementById("btn11").addEventListener("click", function () {
-	var arraysize = document.getElementById("arraySize").value
-	document.getElementById("array").innerHTML = ""
-	createArray(arraysize)
+	// check if input file is empty
+	if (document.getElementById("file").value == "") {
+		alert("Please select a file")
+	} else {
+		var arraysize = document.getElementById("arraySize").value
+		document.getElementById("array").innerHTML = ""
+		document.getElementById("sortedArray").innerHTML = ""
+		createArray(arraysize)
+	}
 })
+
