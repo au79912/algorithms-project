@@ -48,24 +48,28 @@ function changeColor(id) {
 
 
 function createArray(size) {
-	const input = document.getElementById("file")
-	const displayArray = document.getElementById("array")
-	displayArray.innerHTML = "Unsorted Array: "
-	const reader = new FileReader()
-	reader.onload = function () {
-		let array = new Array()
-		const lines = reader.result.split("\n")
-		for (var i = 0; i < size; i++) {
-			array[i] = parseInt(lines[i])
-			if (i == size - 1) {
-				displayArray.innerHTML += array[i]
-			} else {
-				displayArray.innerHTML += array[i] + ", "
+	if (size > 1000000) {
+		alert("Array size must be less than 1 million")
+	} else {
+		const input = document.getElementById("file")
+		const displayArray = document.getElementById("array")
+		displayArray.innerHTML = "Unsorted Array: "
+		const reader = new FileReader()
+		reader.onload = function () {
+			let array = new Array()
+			const lines = reader.result.split("\n")
+			for (var i = 0; i < size; i++) {
+				array[i] = parseInt(lines[i])
+				if (i == size - 1) {
+					displayArray.innerHTML += array[i]
+				} else {
+					displayArray.innerHTML += array[i] + ", "
+				}
 			}
+			select(array)
 		}
-		select(array)
+		reader.readAsText(input.files[0])
 	}
-	reader.readAsText(input.files[0])
 }
 
 function insertion_sort(array) {

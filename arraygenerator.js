@@ -1,5 +1,5 @@
 array = new Array(1000000)
-for (var i = 0; i < 10000; i++) {
+for (var i = 0; i < array.length ; i++) {
 	array[i] = Math.floor(Math.random() * 1000)
 }
 
