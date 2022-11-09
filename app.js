@@ -25,6 +25,8 @@ function select(array) {
 		bucket_sort(array)
 	} else if (buttonClicked == "btn8") {
 		courting_sort(array)
+	} else if (buttonClicked == "btn9") {
+		book_QuickSort(array)
 	}
 }
 
@@ -511,6 +513,47 @@ function courtingSort(array) {
 	}
 }
 
+function book_QuickSort(array) {
+	var sortedArray = new Array()
+	for (var i = 0; i < array.length; i++) {
+		sortedArray[i] = array[i]
+	}
+	var startTime = performance.now()
+	bookQuickSort(sortedArray, 0, sortedArray.length - 1)
+	var endTime = performance.now()
+	var time = endTime - startTime
+
+	// yValues.push[(time)]
+	yValues[8] = time
+
+	document.getElementById("sortedArray").innerHTML = "Sorted Array: "
+
+	for (var i = 0; i < sortedArray.length; i++) {
+		if (i == sortedArray.length - 1) {
+			document.getElementById("sortedArray").innerHTML += sortedArray[i]
+		} else {
+			document.getElementById("sortedArray").innerHTML += sortedArray[i] + ", "
+		}
+	}
+	document.getElementById("time").innerHTML = "Time: " + time + "ms"
+	// quick sort time complexity
+	document.getElementById("time").innerHTML += "<br>" + "Time Complexity: O(nlogn)"
+	document.getElementById("time").innerHTML += "<br>Space Complexity: O(logn)"
+}
+
+// make quick sort function named BookQuickSort such that when quick sort is called on a subarray lesser than 10 elements, insertion sort is called instead
+function bookQuickSort(array, left, right) {
+	if (left < right) {
+		if (right - left < 20) {
+			insertionSort(array)
+		} else {
+			var pivot = partition(array, left, right)
+			bookQuickSort(array, left, pivot - 1)
+			bookQuickSort(array, pivot + 1, right)
+		}
+	}
+}
+
 function runAll(array) {
 	insertion_sort(array)
 	bubble_sort(array)
@@ -520,6 +563,7 @@ function runAll(array) {
 	radix_sort(array)
 	bucket_sort(array)
 	courting_sort(array)
+	book_QuickSort(array)
 
 	document.getElementById("time").innerHTML = ""
 	console.log(yValues)
@@ -537,6 +581,7 @@ function runAll(array) {
 				"Radix Sort",
 				"Bucket Sort",
 				"Courting Sort",
+				"Book 7.4.5",
 			],
 			datasets: [
 				{
@@ -551,6 +596,7 @@ function runAll(array) {
 						"rgba(255, 159, 64, 0.2)",
 						"rgba(255, 99, 132, 0.2)",
 						"rgba(54, 162, 235, 0.2)",
+						"rgba(255, 159, 64, 0.2)",
 					],
 					borderColor: [
 						"rgba(255, 99, 132, 1)",
@@ -561,6 +607,8 @@ function runAll(array) {
 						"rgba(255, 159, 64, 1)",
 						"rgba(255, 99, 132, 1)",
 						"rgba(54, 162, 235, 1)",
+						"rgba(255, 159, 64, 1)",
+
 					],
 					borderWidth: 1,
 				},
@@ -582,6 +630,7 @@ document.getElementById("btn11").addEventListener("click", function () {
 	if (document.getElementById("file").value == "") {
 		alert("Please select a file")
 	} else {
+		document.getElementById("time").innerHTML = "Processing..."
 		var arraysize = document.getElementById("arraySize").value
 		document.getElementById("array").innerHTML = ""
 		document.getElementById("sortedArray").innerHTML = ""
@@ -597,9 +646,12 @@ document.getElementById("btn12").addEventListener("click", function () {
 		if (size > 1000000) {
 			alert("Array size must be less than 1 million")
 		} else {
+			// show processing message while sorting
+			document.getElementById("time").innerHTML = "Processing..."
 			const input = document.getElementById("file")
 			const displayArray = document.getElementById("array")
 			displayArray.innerHTML = "Unsorted Array: "
+			document.getElementById("sortedArray").innerHTML = ""
 			const reader = new FileReader()
 			reader.onload = function () {
 				let array = new Array()
