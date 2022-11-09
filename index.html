@@ -40,7 +40,12 @@
 		<input type="number" id="arraySize" name="arraySize" min="1" value="10">
 		<br>
 		<button id="btn11">Generate/Sort Array</button>
+		<br>
+		<button id="btn12">Plot graph</button>
 	</div>
+
+	<br>
+	<br>
 
 	<div id="array"
 		style="border: 1px solid rgb(255, 255, 255); height: 70px; overflow: auto; display: block; margin-left: auto; margin-right: auto;">
@@ -59,8 +64,11 @@
 	<div id="time" style="text-align: center; padding-top: 25px; color: red;">
 	</div>
 
+	<canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+
 	<script src="app.js"></script>
-	<!-- <script src="fs.js"></script> -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+	</script>
 </body>
 
 </html>

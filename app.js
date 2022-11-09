@@ -1,5 +1,6 @@
 var buttonClicked
 var buttonCheck = false
+let yValues = []
 
 function checkbtn() {
 	for (var i = 1; i <= 10; i++) {
@@ -90,6 +91,8 @@ function insertion_sort(array) {
 	var endTime = performance.now()
 	var time = endTime - startTime
 
+	yValues[0] = time
+
 	document.getElementById("sortedArray").innerHTML = "Sorted Array: "
 
 	for (var i = 0; i < sortedArray.length; i++) {
@@ -122,6 +125,9 @@ function bubble_sort(array) {
 	var endTime = performance.now()
 	var time = endTime - startTime
 
+	// yValues.push[(time)]
+	yValues[1] = time
+
 	document.getElementById("sortedArray").innerHTML = "Sorted Array: "
 
 	for (var i = 0; i < sortedArray.length; i++) {
@@ -145,6 +151,9 @@ function merge_sort(array) {
 	mergeSort(sortedArray, 0, sortedArray.length - 1)
 	var endTime = performance.now()
 	var time = endTime - startTime
+
+	// yValues.push[(time)]
+	yValues[2] = time
 
 	document.getElementById("sortedArray").innerHTML = "Sorted Array: "
 
@@ -216,6 +225,9 @@ function heap_sort(array) {
 	var endTime = performance.now()
 	var time = endTime - startTime
 
+	// yValues.push[(time)]
+	yValues[3] = time
+
 	document.getElementById("sortedArray").innerHTML = "Sorted Array: "
 
 	for (var i = 0; i < sortedArray.length; i++) {
@@ -272,6 +284,9 @@ function quick_sort(array) {
 	var endTime = performance.now()
 	var time = endTime - startTime
 
+	// yValues.push[(time)]
+	yValues[4] = time
+
 	document.getElementById("sortedArray").innerHTML = "Sorted Array: "
 
 	for (var i = 0; i < sortedArray.length; i++) {
@@ -321,6 +336,9 @@ function radix_sort(array) {
 	radixSort(sortedArray)
 	var endTime = performance.now()
 	var time = endTime - startTime
+
+	// yValues.push[(time)]
+	yValues[5] = time
 
 	document.getElementById("sortedArray").innerHTML = "Sorted Array: "
 
@@ -384,6 +402,9 @@ function bucket_sort(array) {
 	bucketSort(sortedArray)
 	var endTime = performance.now()
 	var time = endTime - startTime
+
+	// yValues.push[(time)]
+	yValues[6] = time
 
 	document.getElementById("sortedArray").innerHTML = "Sorted Array: "
 
@@ -453,6 +474,9 @@ function courting_sort(array) {
 	var endTime = performance.now()
 	var time = endTime - startTime
 
+	// yValues.push[(time)]
+	yValues[7] = time
+
 	document.getElementById("sortedArray").innerHTML = "Sorted Array: "
 
 	for (var i = 0; i < sortedArray.length; i++) {
@@ -487,6 +511,71 @@ function courtingSort(array) {
 	}
 }
 
+function runAll(array) {
+	insertion_sort(array)
+	bubble_sort(array)
+	merge_sort(array)
+	heap_sort(array)
+	quick_sort(array)
+	radix_sort(array)
+	bucket_sort(array)
+	courting_sort(array)
+
+	document.getElementById("time").innerHTML = ""
+	console.log(yValues)
+
+	var ctx = document.getElementById("myChart").getContext("2d")
+	var myChart = new Chart(ctx, {
+		type: "bar",
+		data: {
+			labels: [
+				"Insertion Sort",
+				"Bubble Sort",
+				"Merge Sort",
+				"Heap Sort",
+				"Quick Sort",
+				"Radix Sort",
+				"Bucket Sort",
+				"Courting Sort",
+			],
+			datasets: [
+				{
+					label: "Time Taken (ms)",
+					data: yValues,
+					backgroundColor: [
+						"rgba(255, 99, 132, 0.2)",
+						"rgba(54, 162, 235, 0.2)",
+						"rgba(255, 206, 86, 0.2)",
+						"rgba(75, 192, 192, 0.2)",
+						"rgba(153, 102, 255, 0.2)",
+						"rgba(255, 159, 64, 0.2)",
+						"rgba(255, 99, 132, 0.2)",
+						"rgba(54, 162, 235, 0.2)",
+					],
+					borderColor: [
+						"rgba(255, 99, 132, 1)",
+						"rgba(54, 162, 235, 1)",
+						"rgba(255, 206, 86, 1)",
+						"rgba(75, 192, 192, 1)",
+						"rgba(153, 102, 255, 1)",
+						"rgba(255, 159, 64, 1)",
+						"rgba(255, 99, 132, 1)",
+						"rgba(54, 162, 235, 1)",
+					],
+					borderWidth: 1,
+				},
+			],
+		},
+		options: {
+			scales: {
+				y: {
+					beginAtZero: true,
+				},
+			},
+		},
+	})
+}
+
 
 document.getElementById("btn11").addEventListener("click", function () {
 	// check if input file is empty
@@ -500,3 +589,32 @@ document.getElementById("btn11").addEventListener("click", function () {
 	}
 })
 
+document.getElementById("btn12").addEventListener("click", function () {
+	if (document.getElementById("file").value == "") {
+		alert("Please select a file")
+	} else {
+		const size = document.getElementById("arraySize").value
+		if (size > 1000000) {
+			alert("Array size must be less than 1 million")
+		} else {
+			const input = document.getElementById("file")
+			const displayArray = document.getElementById("array")
+			displayArray.innerHTML = "Unsorted Array: "
+			const reader = new FileReader()
+			reader.onload = function () {
+				let array = new Array()
+				const lines = reader.result.split("\n")
+				for (var i = 0; i < size; i++) {
+					array[i] = parseInt(lines[i])
+					if (i == size - 1) {
+						displayArray.innerHTML += array[i]
+					} else {
+						displayArray.innerHTML += array[i] + ", "
+					}
+				}
+				runAll(array)
+			}
+			reader.readAsText(input.files[0])
+		}
+	}
+})
