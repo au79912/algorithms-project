@@ -35,12 +35,16 @@
 	<br>
 	<!-- <br> -->
 
-	<div style="text-align: center;">
+	<div style="text-align: center;" id="size">
 		<label for="arraySize">Enter Array Size: </label>
 		<input type="number" id="arraySize" name="arraySize" min="1" value="10">
 		<br>
 		<button id="btn11">Generate/Sort Array</button>
 		<button id="btn12" style="padding-left:3px;">Plot graph</button>
+	</div>
+
+	<div style="text-align: center;" id = "range">
+		
 	</div>
 
 	<br>
@@ -63,7 +67,9 @@
 	<div id="time" style="text-align: center; padding-top: 25px; color: red;">
 	</div>
 
+	<div style="text-align: center;">
 	<canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+	</div>
 
 	<script src="app.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">

@@ -3,7 +3,7 @@ var buttonCheck = false
 let yValues = []
 
 function checkbtn() {
-	for (var i = 1; i <= 10; i++) {
+	for (var i = 1; i <= 11; i++) {
 		document.getElementById("btn" + i).addEventListener("click", select())
 	}
 }
@@ -27,11 +27,22 @@ function select(array) {
 		courting_sort(array)
 	} else if (buttonClicked == "btn9") {
 		book_QuickSort(array)
+	} else if (buttonClicked == "btn10") {
+		document.getElementById("time").innerHTML = ""
+		book_CountSort(array)
 	}
 }
 
 
 function changeColor(id) {
+	console.log(id)
+	document.getElementById("range").innerHTML = ""
+
+	if (id == "btn10") {
+		document.getElementById("range").innerHTML = "<br>Min: <input type='number' id='min' value='0'> Max: <input type='number' id='max' value='100'>"
+		document.getElementById("range").innerHTML += "<br> <button id='rangebtn'>Count</button>"
+	}
+
 	if (buttonCheck == false) {
 		var element = document.getElementById(id)
 		element.style.backgroundColor = "green"
@@ -541,7 +552,6 @@ function book_QuickSort(array) {
 	document.getElementById("time").innerHTML += "<br>Space Complexity: O(logn)"
 }
 
-// make quick sort function named BookQuickSort such that when quick sort is called on a subarray lesser than 10 elements, insertion sort is called instead
 function bookQuickSort(array, left, right) {
 	if (left < right) {
 		if (right - left < 20) {
@@ -552,6 +562,41 @@ function bookQuickSort(array, left, right) {
 			bookQuickSort(array, pivot + 1, right)
 		}
 	}
+}
+
+function book_CountSort(numarray) {
+	document.getElementById("rangebtn").addEventListener("click", function () {
+		let min = document.getElementById("min").value
+		let max = document.getElementById("max").value
+		let count = 0
+
+		// count the number of occurences of elements in the range [min, max] and increment count
+		for (let i = 0; i < numarray.length; i++) {
+			if (numarray[i] >= min && numarray[i] <= max) {
+				count++
+			}
+		}
+
+		document.getElementById("sortedArray").innerHTML = "Number of elements in the range [" + min + ", " + max + "] is " + count
+		document.getElementById("sortedArray").style.color = "green"
+	}) 
+}
+
+function bookCountSort(array) {
+	let min = document.getElementById("min").value
+	let max = document.getElementById("max").value
+	let count
+
+	console.log(array)
+
+	// count the number of elements in the array that are in the range
+	for (let i = 0; i < array.length; i++) {
+		if (array[i] >= min && array[i] <= max) {
+			count++
+		}
+	}
+
+	document.getElementById("time").innerHTML = "Count: " + count + " Elements"
 }
 
 function runAll(array) {
