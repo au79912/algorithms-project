@@ -570,7 +570,6 @@ function book_CountSort(numarray) {
 		let max = document.getElementById("max").value
 		let count = 0
 
-		// count the number of occurences of elements in the range [min, max] and increment count
 		for (let i = 0; i < numarray.length; i++) {
 			if (numarray[i] >= min && numarray[i] <= max) {
 				count++
@@ -589,7 +588,6 @@ function bookCountSort(array) {
 
 	console.log(array)
 
-	// count the number of elements in the array that are in the range
 	for (let i = 0; i < array.length; i++) {
 		if (array[i] >= min && array[i] <= max) {
 			count++
@@ -671,7 +669,6 @@ function runAll(array) {
 
 
 document.getElementById("btn11").addEventListener("click", function () {
-	// check if input file is empty
 	if (document.getElementById("file").value == "") {
 		alert("Please select a file")
 	} else {
@@ -691,7 +688,6 @@ document.getElementById("btn12").addEventListener("click", function () {
 		if (size > 1000000) {
 			alert("Array size must be less than 1 million")
 		} else {
-			// show processing message while sorting
 			document.getElementById("time").innerHTML = "Processing..."
 			const input = document.getElementById("file")
 			const displayArray = document.getElementById("array")
